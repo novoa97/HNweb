@@ -5,11 +5,11 @@ var app = express();
 const port = process.env.PORT || '5000';
 
 app.set('port', port);
-app.use(express.static(__dirname + '/dir'));
+app.use(express.static(__dirname + '/dist/HNweb'));
 
 app.get('/[^\.]+$', function(req, res) {
     res.set('Content-Type', 'text/html')
-        .sendFile(path.join(__dirname, '/dir/index.html'))
+        .sendFile(path.join(__dirname, '/dist/HWweb/index.html'))
 });
 
 app.listen(app.get('port'), function() {
