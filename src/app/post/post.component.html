@@ -1,0 +1,43 @@
+<td>
+  <table>
+    <tbody>
+      <li  class="posts" *ngFor="let post of posts; let i=index; async">
+        <tr>
+          <td align="right" valign="top" class="title">
+            <span class="rank">{{i + 1}}</span>
+          </td>
+          <td valign="top" class="votelinks">
+
+              <a id='up_16898827' href='vote?id=16898827&amp;how=up&amp;goto=news'>
+                <div class='votearrow' title='upvote'></div>
+              </a>
+
+          </td>
+          <td>
+            <a class="title" href="http://{{post.url}}" class="storylink">{{post.title}}</a>
+            <span class="sitebit comhead"> ( {{post.url}} ) </span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+          </td>
+          <td class="subtext">
+            <a ng-click="vote({post.id})"> vote </a>
+            <span class="score"> {{post.upvotes_count}} </span> by
+            <a routerLink="/user/{{post.user_id}}" routerLinkActive="active"> WWWW </a>
+            <span class="time"> {{post.created_at| timeAgo}} </span>
+            <span class="comments">
+              <a routerLink="/post/{{post.id}}" routerLinkActive="active">{{post.nComments}} comments </a>
+            </span>
+          </td>
+        </tr>
+        <tr class="spacer" style="height:5px">
+        </tr>
+        <!--
+        {{i + 1}}
+        <a ng-href="google.com">{{post.title}}</a> ({{post.link}})
+        {{post.upvotes_count}} points by {{post.id}} {{post.created_at| timeAgo}}| <a href="/post/{{post.id}}">{{post.nComments}} comments </a><br>-->
+      </li>
+    </tbody>
+  </table>
+</td>
