@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PostComponent } from './post/post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { UserComponent } from './user/user.component';
-import { AskComponent } from './ask/ask.component'
+import { AskComponent } from './ask/ask.component';
+import { LoginComponent } from './login/login.component'
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: '', component: PostComponent},
   { path: 'post/:id', component: PostDetailComponent },
   { path: 'user/:id', component: UserComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

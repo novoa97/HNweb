@@ -20,11 +20,14 @@ export class UserService {
   }
 
   getuser(id): Observable<user>{
-
     return this.http.get<user>('https://asw-hacker-news.herokuapp.com/api/users/'+id)
 
   }
   getName(id){
     return this.http.get('https://asw-hacker-news.herokuapp.com/api/users/'+id+'.json')
+  }
+  
+  getUserByToken(token): Observable<user>{
+	return this.http.get<user>('https://asw-hacker-news.herokuapp.com/api/userByToken/'+token)
   }
 }

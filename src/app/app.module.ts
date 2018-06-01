@@ -12,6 +12,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
 import { UserComponent } from './user/user.component';
 import { HeaderComponent } from './header/header.component';
 import { AskComponent } from './ask/ask.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { AskComponent } from './ask/ask.component';
     TimeAgoPipe,
     UserComponent,
     HeaderComponent,
-    AskComponent
+    AskComponent,
+	LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+	FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

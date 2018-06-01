@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>Login</h1>
+    <form #loginForm="ngForm">
+      <div class="form-group">
+        <label for="token">Token: </label>
+        <input type="text" class="form-control" id="token" required [(ngModel)]="token" name="token"
+               #name="ngModel">
+      </div>
+ 
+
+      <button type="button" class="btn btn-default" (click)="getSessio(); loginForm.reset()">Log In</button>
+
+ 
+    </form>
+</div>
