@@ -33,6 +33,11 @@ export class PostService {
   getPostbyid(id: number): Observable<post> {
 
     return this.http.get<post>('https://asw-hacker-news.herokuapp.com/api/posts/'+id);
-}
+  }
+  getNewest (): Observable<post[]> {
+
+    return this.http.get<post[]>('https://asw-hacker-news.herokuapp.com/api/newest');
+
+  }
 
 }

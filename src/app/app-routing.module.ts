@@ -6,6 +6,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { UserComponent } from './user/user.component';
 import { AskComponent } from './ask/ask.component';
 import { LoginComponent } from './login/login.component'
+import { NewestComponent } from './newest/newest.component'
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'post/:id', component: PostDetailComponent },
   { path: 'user/:id', component: UserComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'newest', component: NewestComponent },
 ];
 
 @NgModule({

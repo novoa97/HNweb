@@ -13,6 +13,7 @@ import { UserComponent } from './user/user.component';
 import { HeaderComponent } from './header/header.component';
 import { AskComponent } from './ask/ask.component';
 import { LoginComponent } from './login/login.component';
+import { NewestComponent } from './newest/newest.component';
 import { FormsModule }   from '@angular/forms';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FormsModule }   from '@angular/forms';
     UserComponent,
     HeaderComponent,
     AskComponent,
-	LoginComponent
+	LoginComponent,
+	NewestComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+<td>
+  <table>
+    <tbody>
+      <li  class="asks" *ngFor="let ask of asks; let i=index; async">
+        <tr>
+          <td align="right" valign="top" class="title">
+            <span class="rank">{{i + 1}}</span>
+          </td>
+          <td valign="top" class="votelinks">
+
+              <a id='up_16898827' href='vote?id=16898827&amp;how=up&amp;goto=news'>
+                <div class='votearrow' title='upvote'></div>
+              </a>
+
+          </td>
+          <td>
+            <a class="title" href="http://{{ask.url}}" class="storylink">{{ask.title}}</a>
+            <span class="sitebit comhead"> ( {{ask.url}} ) </span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+          </td>
+          <td class="subtext">
+            <a ng-click="vote({ask.id})"> vote </a>
+            <span class="score"> {{ask.upvotes_count}} </span> by
+            <a routerLink="/user/{{ask.user_id}}" routerLinkActive="active"> {{ask.user_name}} </a>
+            <span class="time"> {{ask.created_at| timeAgo}} </span>
+            <span class="comments">
+              <a routerLink="/post/{{ask.id}}" routerLinkActive="active">{{ask.nComments}} comments </a>
+            </span>
+          </td>
+        </tr>
+        <tr class="spacer" style="height:5px">
+        </tr>
+        <!--
+        {{i + 1}}
+        <a ng-href="google.com">{{ask.title}}</a> ({{ask.link}})
+        {{ask.upvotes_count}} points by {{ask.id}} {{ask.created_at| timeAgo}}| <a href="/ask/{{ask.id}}">{{ask.nComments}} comments </a><br>-->
+      </li>
+    </tbody>
+  </table>
+</td>
