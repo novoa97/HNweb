@@ -20,7 +20,12 @@ export class PostComponent implements OnInit {
   constructor(private PostService: PostService, private UserService: UserService) { }
 
   getPosts(): void {
-      this.PostService.getPosts().subscribe(posts => this.posts = posts);
+      this.PostService.getPosts().subscribe((posts) => {
+        this.posts = posts
+        for ( let p of this.posts ){
+          this.UserService.getuser(p.user_id).subscribe(user => p.user_name = user.name)
+        }
+      })
   }
   vote(): void{
       this.PostService.getAsk().subscribe(posts => this.posts = posts);
