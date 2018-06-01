@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
-import { post } from '../post/post.ts'
+import { post } from '../post/post'
 
 @Component({
   selector: 'app-ask',
