@@ -15,7 +15,7 @@ export class AskComponent implements OnInit {
 
   asks: post[]
 
-  constructor( private PostService: PostService, private UserService: UserService) { }
+  constructor( private PostService: PostService; private UserService: UserService) { }
 
   ngOnInit() {
     this.getAsk()
@@ -28,7 +28,7 @@ export class AskComponent implements OnInit {
       for ( let p of this.asks ){
         this.UserService.getuser(p.user_id).subscribe(user => p.user_name = user.name)
       }
-    }));
+    })
 
   }
 
