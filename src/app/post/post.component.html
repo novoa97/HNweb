@@ -24,7 +24,7 @@
           <td class="subtext">
             <a ng-click="vote({post.id})"> vote </a>
             <span class="score"> {{post.upvotes_count}} </span> by
-            <a routerLink="/user/{{post.user_id}}" routerLinkActive="active"> WWWW </a>
+            <a routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{post.user_name}} </a>
             <span class="time"> {{post.created_at| timeAgo}} </span>
             <span class="comments">
               <a routerLink="/post/{{post.id}}" routerLinkActive="active">{{post.nComments}} comments </a>
