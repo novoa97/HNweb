@@ -15,7 +15,7 @@ export class AskComponent implements OnInit {
 
   asks: post[]
 
-  constructor( private PostService: PostService, private UserService: UserService) { }
+  constructor( private PostService: PostService; private UserService: UserService) { }
 
   ngOnInit() {
     this.getAsk()
