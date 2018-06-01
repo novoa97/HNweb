@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PostComponent } from '../post.service';
+import { PostService } from '../post.service';
 import { post } from '../post/post.ts'
 
 @Component({
@@ -9,7 +9,7 @@ import { post } from '../post/post.ts'
 })
 export class AskComponent implements OnInit {
 
-  ask: post[]
+  asks: post[]
 
   constructor( private PostService: PostService) { }
 
@@ -19,7 +19,7 @@ export class AskComponent implements OnInit {
   }
   getAsk(){
 
-    this.PostService.getAsk().subscribe(posts => this.ask = posts);
+    this.PostService.getAsk().subscribe(posts => this.asks = posts);
 
   }
 
