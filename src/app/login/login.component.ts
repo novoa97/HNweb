@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
   getSessio(){
 	  this.UserService.getUserByToken(this.token).subscribe(user => localStorage.setItem('name', user.name));
 	  localStorage.setItem('token', this.token);
+	  localStorage.setItem('login', "true");
+	  window.location.reload();
 	  this.router.navigate(['/']);
   }
   

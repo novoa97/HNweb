@@ -24,8 +24,11 @@
               </span>
             </td>
           <td style="text-align:right;padding-right:4px;">
-              <span class="pagetop">
-                <a href="login">login</a>
+              <span id="login">
+                <button type="button" class="btn btn-default" (click)="login()">Log In</button>
+              </span>
+			  <span id="logout">
+                <button type="button" class="btn btn-default" (click)="logout()">Log Out</button>
               </span>
           </td>
           </tbody>
