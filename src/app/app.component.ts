@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 
 import { user } from './user/user'
 import { UserService } from './user/user.service'
+import { LoginService} from './login.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +14,7 @@ export class AppComponent {
   title = 'app';
   id: number;
   user: user;
-  constructor(private router: Router, private UserService: UserService) { }
+  constructor(private router: Router, private UserService: UserService, private LoginService: LoginService) { }
 
   ngOnInit() {
 	  console.log(localStorage.getItem("login"));
@@ -37,6 +38,7 @@ export class AppComponent {
 
 	login(){
     console.log("login")
-		this.router.navigate(['/login']);
+    this.LoginService.login().subscribe(response => console.log(response))
+	//	this.router.navigate(['/login']);
 	}
 }
