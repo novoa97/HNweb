@@ -31,14 +31,14 @@ export class CommentService {
   }
 
   postComment(comment_to_pass: string, post_id: number) {
-	  var headers = new HttpHeaders();
-	  headers.append('Authorization', localStorage.getItem('token'));
-	  headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    console.log(headers)
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        })
+    };
 	  console.log(comment_to_pass);
 	  console.log(""+post_id);
-	  return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/',
-									JSON.stringify({comment:comment_to_pass,post_id:post_id}),
-									{headers:headers});
+	  return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/',	JSON.stringify({comment:comment_to_pass,post_id:post_id}), httpOptions);
   }
 }
