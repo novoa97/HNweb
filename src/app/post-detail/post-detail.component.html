@@ -24,6 +24,15 @@
 	  <tr>
       <td colspan="1">
       </td>
+	  <form #commentForm="ngForm">
+	  <textarea rows="4" cols="50" id="comment_to_pass" required [(ngModel)]="comment_to_pass" name="comment_to_pass"
+               #name="ngModel"></textarea>
+      <button type="button" class="btn btn-default" (click)="comment(); commentForm.reset()">Comment</button>
+	  </form>
+	  </tr>
+	  <tr>
+      <td colspan="1">
+      </td>
 	  <td id="text">
 		<span class="text1"> {{post.text}} </span>
 	  </td>

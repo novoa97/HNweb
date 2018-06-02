@@ -13,6 +13,8 @@ import { user } from '../user/user'
 import { comment } from '../comment/comment'
 import { CommentService} from '../comment/comment.service'
 
+import { FormsModule }   from '@angular/forms';
+
 
 @Component({
   selector: 'app-post-detail',
@@ -24,6 +26,7 @@ export class PostDetailComponent implements OnInit {
   post: post;
   name: string
   comments: comment[]
+  comment_to_pass: string
 
   constructor(
     private route: ActivatedRoute,
@@ -49,9 +52,27 @@ export class PostDetailComponent implements OnInit {
   getNameUser(user_id) {
     this.UserService.getuser(user_id).subscribe(
       (user) =>{
-        console.log(user.name)
         this.name = user.name},
       (error) =>{console.log(error)}
     )
+  }
+  
+  comment(){
+
+	  this.CommentService.postComment(this.comment_to_pass, this.post.id).subscribe(
+     (response) => {
+            /* this function is executed every time there's a new output */
+           console.log("VALUE RECEIVED: "+response);
+     },
+     (err) => {
+            /* this function is executed when there's an ERROR */
+            console.log("ERROR: "+err);
+     },
+     () => {
+            /* this function is executed when the observable ends (completes) its stream */
+            console.log("COMPLETED");
+     }
+ );
+	console.log ("adeu")
   }
 }
