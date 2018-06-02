@@ -24,9 +24,10 @@ import { FormsModule }   from '@angular/forms';
 export class PostDetailComponent implements OnInit {
 
   post: post;
-  name: string
+  name: string = "Hola"
   comments: comment[]
   comment_to_pass: string
+  user: user
 
   constructor(
     private route: ActivatedRoute,
@@ -52,8 +53,7 @@ export class PostDetailComponent implements OnInit {
   getNameUser(user_id) {
     this.UserService.getuser(user_id).subscribe(
       (user) =>{
-        this.name = user.name
-        console.log(user)},
+        this.user = user},
       (error) =>{console.log(error)}
     )
   }

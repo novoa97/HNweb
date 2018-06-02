@@ -14,20 +14,20 @@ import { user } from '../user/user'
 })
 export class ReplyComponent implements OnInit {
   comment: comment;
-  name: string;
+  user: user
   reply_to_pass: string;
 
   constructor(
-	private route: ActivatedRoute, 
+	private route: ActivatedRoute,
 	private CommentService: CommentService,
-	private UserService: UserService, 
-	private router: Router	
+	private UserService: UserService,
+	private router: Router
 	) { }
 
   ngOnInit() {
 	  this.getComment();
   }
-  
+
   getComment(){
 	  const id = +this.route.snapshot.paramMap.get('id');
 	  this.CommentService.getComment(id).subscribe(
@@ -35,7 +35,7 @@ export class ReplyComponent implements OnInit {
 					this.comment = comment;
 					this.UserService.getuser(comment.user_id).subscribe(
 						(user) =>{
-							this.name = user.name
+							this.user = user
 						},
 						(error) =>{console.log(error)}
 					)
@@ -44,16 +44,16 @@ export class ReplyComponent implements OnInit {
             /* this function is executed when there's an ERROR */
             console.log("ERROR: "+err);
 		});
-	  
+
   }
-  
+
   reply(){
 	  console.log(this.reply_to_pass);
 	  this.CommentService.postReply(this.reply_to_pass, +this.comment.post_id, this.comment.id).subscribe(
 		(comment) => {
             /* this function is executed every time there's a new output */
-           
-           
+
+
 		},
 		(err) => {
             /* this function is executed when there's an ERROR */
@@ -64,7 +64,7 @@ export class ReplyComponent implements OnInit {
             console.log("COMPLETED");
             //window.location.reload();
 			this.router.navigate(['/post/'+this.comment.post_id]);
-				
+
 			}
 		);
   }
