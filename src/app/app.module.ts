@@ -16,6 +16,7 @@ import { AskComponent } from './ask/ask.component';
 import { LoginComponent } from './login/login.component';
 import { NewestComponent } from './newest/newest.component';
 import { ReplyComponent } from './reply/reply.component';
+import { ThreadsComponent } from './threads/threads.component';
 import { FormsModule }   from '@angular/forms';
 
 
@@ -31,7 +32,8 @@ import { FormsModule }   from '@angular/forms';
     AskComponent,
 	LoginComponent,
 	NewestComponent,
-	ReplyComponent
+	ReplyComponent,
+	ThreadsComponent
   ],
   imports: [
     BrowserModule,

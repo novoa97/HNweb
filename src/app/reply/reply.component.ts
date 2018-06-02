@@ -62,7 +62,6 @@ export class ReplyComponent implements OnInit {
 		() => {
             /* this function is executed when the observable ends (completes) its stream */
             console.log("COMPLETED");
-            //window.location.reload();
 			this.router.navigate(['/post/'+this.comment.post_id]);
 				
 			}

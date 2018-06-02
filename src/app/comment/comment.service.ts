@@ -64,4 +64,13 @@ export class CommentService {
 	body = body.set('parent_id', ""+parent_id); 
 	return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/reply/', body, httpOptions);  
   }
+  
+  getThreads(user_id: number): Observable<comment[]> {
+	  const httpOptions = {
+        headers: new HttpHeaders({
+            'Authorization':  localStorage.getItem('token')
+        })
+	};
+	  return this.http.get<comment[]>('https://asw-hacker-news.herokuapp.com/api/threads/'+user_id, httpOptions);
+  }
 }
