@@ -38,7 +38,7 @@ export class AppComponent {
 
 	login(){
     console.log("login")
-    this.LoginService.login().subscribe(response => console.log(response))
-	//	this.router.navigate(['/login']);
+    //this.LoginService.login().subscribe(response => console.log(response))
+    this.router.navigate(['/login']);
 	}
 }
