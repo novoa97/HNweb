@@ -34,6 +34,7 @@ export class CommentService {
 	  var headers = new HttpHeaders();
 	  headers.append('Authorization', localStorage.getItem('token'));
 	  headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    console.log(headers)
 	  console.log(comment_to_pass);
 	  console.log(""+post_id);
 	  return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/',
