@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { NewestComponent } from './newest/newest.component';
 import { FormsModule }   from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,10 @@ import { FormsModule }   from '@angular/forms';
     AppRoutingModule,
 	FormsModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{
+				provide: LocationStrategy, 
+				useClass: HashLocationStrategy
+			  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,6 +16,7 @@ export class AppComponent {
 	  console.log(localStorage.getItem("login"));
 	console.log(localStorage.getItem("token"));
 	console.log(localStorage.getItem("name"));
+	console.log(localStorage.getItem("id"));
     if (localStorage.getItem("token") === null) {
 		document.getElementById("logout").style.visibility="hidden";
 		document.getElementById("login").style.visibility="visible";

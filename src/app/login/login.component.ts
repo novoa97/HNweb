@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {this.submitted = true; }
   
   getSessio(){
-	  this.UserService.getUserByToken(this.token).subscribe(user => localStorage.setItem('name', user.name));
+	  this.UserService.getUserByToken(this.token).subscribe((user) => {
+		  localStorage.setItem('name', user.name)
+		  localStorage.setItem('id', ""+user.id)
+	  });
 	  localStorage.setItem('token', this.token);
 	  localStorage.setItem('login', "true");
 	  window.location.reload();
