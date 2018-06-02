@@ -18,6 +18,8 @@ import { NewestComponent } from './newest/newest.component';
 import { ReplyComponent } from './reply/reply.component';
 import { ThreadsComponent } from './threads/threads.component';
 import { FormsModule }   from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -34,15 +36,18 @@ import { FormsModule }   from '@angular/forms';
 	NewestComponent,
 	ReplyComponent,
 	ThreadsComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-	FormsModule
+	  FormsModule,
+    MatIconModule,
+    CommonModule
   ],
   providers: [{
-				provide: LocationStrategy, 
+				provide: LocationStrategy,
 				useClass: HashLocationStrategy
 			  }],
   bootstrap: [AppComponent]

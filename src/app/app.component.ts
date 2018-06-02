@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import {Router} from "@angular/router";
 
+import { user } from './user/user'
+import { UserService } from './user/user.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,34 +12,31 @@ import {Router} from "@angular/router";
 export class AppComponent {
   title = 'app';
   id: number;
-  constructor(private router: Router) { }
-  
+  user: user;
+  constructor(private router: Router, private UserService: UserService) { }
+
   ngOnInit() {
 	  console.log(localStorage.getItem("login"));
-	console.log(localStorage.getItem("token"));
-	console.log(localStorage.getItem("name"));
-	console.log(localStorage.getItem("id"));
-	this.id = +localStorage.getItem("id");
-    if (localStorage.getItem("token") === null) {
-		document.getElementById("logout").style.visibility="hidden";
-		document.getElementById("login").style.visibility="visible";
-		document.getElementById("th").style.visibility="hidden";
-	}
-	else {
-		document.getElementById("login").style.visibility="hidden";
-		document.getElementById("logout").style.visibility="visible";
-		document.getElementById("threads").style.visibility="visible";
-	}
+	  console.log(localStorage.getItem("token"));
+	  console.log(localStorage.getItem("name"));
+	  console.log(localStorage.getItem("id"));
+	  this.id = +localStorage.getItem("id");
+    console.log(localStorage.getItem("token")=== null)
+    if (localStorage.getItem("token")){
+      this.UserService.getUserByToken(localStorage.getItem("token")).subscribe(user => this.user = user)
+
+    }
+
   }
-	
+
 	logout(){
 		localStorage.removeItem("token");
 		localStorage.removeItem("name");
-		document.getElementById("logout").style.visibility="hidden";
-		document.getElementById("login").style.visibility="visible";
+    user = null
 	}
-	
+
 	login(){
+    console.log("login")
 		this.router.navigate(['/login']);
 	}
 }

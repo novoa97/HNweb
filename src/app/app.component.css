@@ -1,0 +1,12 @@
+.navbar{
+  font-family: Verdana, Geneva, sans-serif;
+}
+.hname{
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+.login:hover{
+  cursor:pointer;
+  text-decoration: underline;
+}
