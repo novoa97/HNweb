@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
@@ -37,8 +37,15 @@ export class CommentService {
             'Authorization':  localStorage.getItem('token')
         })
     };
+	
 	  console.log(comment_to_pass);
 	  console.log(""+post_id);
-	  return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/',	JSON.stringify({comment:comment_to_pass,post_id:post_id}), httpOptions);
+	  
+	  let body = new HttpParams();
+	  body = body.set('comment', comment_to_pass);
+	  body = body.set('post_id', ""+post_id);
+	  
+	  console.log(body);
+	  return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/',	body, httpOptions);
   }
 }
