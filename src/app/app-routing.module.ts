@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { AskComponent } from './ask/ask.component';
 import { LoginComponent } from './login/login.component'
 import { NewestComponent } from './newest/newest.component'
+import { ReplyComponent } from './reply/reply.component'
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'newest', component: NewestComponent },
+  { path: 'reply/:id', component: ReplyComponent },
 ];
 
 @NgModule({

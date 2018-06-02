@@ -1,0 +1,29 @@
+<tr class="athing" id="123123123">
+          <td class="votelinks" valign="top" align="right">
+              <a id="up_16898827" href="vote?id=16898827&amp;how=up&amp;goto=news">
+							<div class="votearrow" title="upvote"></div>
+							</a>
+					</td>
+					<td class="uppertext" style="color: #808080; font-size: 12px">
+						<span class="user"> {{name}} </span>
+						<span class="time"> {{comment.created_at| timeAgo}}</span> |
+						<span class="score"> {{comment.votes}} points </span>
+					</td>
+					</tr>
+			<tr>
+            <td colspan="1">
+            </td>
+            <td class="subtext">
+              <span class="text">{{comment.text}}</span>
+            </td>
+</tr>
+
+<tr>
+      <td colspan="1">
+      </td>
+	  <form #replyForm="ngForm">
+	  <textarea rows="4" cols="50" id="reply_to_pass" required [(ngModel)]="reply_to_pass" name="reply_to_pass"
+               #name="ngModel"></textarea>
+      <button type="button" class="btn btn-default" (click)="reply(); replyForm.reset()">Reply</button>
+	  </form>
+</tr>

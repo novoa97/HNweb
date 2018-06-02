@@ -29,6 +29,10 @@ export class CommentService {
 
     return this.http.get<comment[]>('https://asw-hacker-news.herokuapp.com/api/replies/'+id);
   }
+  
+  getComment(id: number){
+	  return this.http.get<comment>('https://asw-hacker-news.herokuapp.com/api/comments/'+id);
+  }
 
   postComment(comment_to_pass: string, post_id: number) {
     const httpOptions = {

@@ -13,14 +13,21 @@
 						<span class="score"> {{comment.votes}} points </span>
 					</td>
 					</tr>
-					<tr>
+			<tr>
             <td colspan="1">
             </td>
             <td class="subtext">
               <span class="text">{{comment.text}}</span>
             </td>
-					 </tr>
-					 <tr>
+			</tr>
+			<tr>
+            <td colspan="1">
+            </td>
+            <td class="reply">
+              <a routerLink="/reply/{{comment.id}}" routerLinkActive="active">reply</a>
+            </td>
+			</tr>
+			<tr>
              <td colspan="1"></td>
              <td class="replies">
                <comment [reply] = comment.id  ></comment>

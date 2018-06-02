@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { AskComponent } from './ask/ask.component';
 import { LoginComponent } from './login/login.component';
 import { NewestComponent } from './newest/newest.component';
+import { ReplyComponent } from './reply/reply.component';
 import { FormsModule }   from '@angular/forms';
 
 
@@ -29,7 +30,8 @@ import { FormsModule }   from '@angular/forms';
     HeaderComponent,
     AskComponent,
 	LoginComponent,
-	NewestComponent
+	NewestComponent,
+	ReplyComponent
   ],
   imports: [
     BrowserModule,
