@@ -15,6 +15,7 @@ import { user } from '../user/user'
 export class ReplyComponent implements OnInit {
   comment: comment;
   name: string;
+  reply_to_pass: string;
 
   constructor(
 	private route: ActivatedRoute, 
@@ -46,7 +47,7 @@ export class ReplyComponent implements OnInit {
   }
   
   reply(){
-	  
+	  console.log(this.reply_to_pass);
   }
 
 }
