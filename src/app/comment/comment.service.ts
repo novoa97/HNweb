@@ -30,14 +30,13 @@ export class CommentService {
     return this.http.get<comment[]>('https://asw-hacker-news.herokuapp.com/api/replies/'+id);
   }
 
-  postComment(comment_to_pass: string, post_id: number): Observable<comment>{
+  postComment(comment_to_pass: string, post_id: number) {
     const httpOptions = {
         headers: new HttpHeaders({
             'Content-Type':  'application/x-www-form-urlencoded',
             'Authorization':  localStorage.getItem('token')
         })
     };
-
 	  console.log(comment_to_pass);
 	  console.log(""+post_id);
 	  return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/',	JSON.stringify({comment:comment_to_pass,post_id:post_id}), httpOptions);
