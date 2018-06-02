@@ -25,11 +25,8 @@
     "@angular/platform-browser": "^6.0.2",
     "@angular/platform-browser-dynamic": "^6.0.2",
     "@angular/router": "^6.0.2",
-<<<<<<< HEAD
     "auth0-js": "^9.6.0",
-=======
     "angular2-jwt": "^0.2.3",
->>>>>>> 1f6ca1397a31c70765b56d4cb05c99144adfe935
     "core-js": "^2.5.4",
     "express": "^4.16.3",
     "rxjs": "^6.0.0",
