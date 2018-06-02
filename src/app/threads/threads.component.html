@@ -1,0 +1,33 @@
+<li class="comments" *ngFor="let comment of comments; let i=index">
+    <table class="fatitem" border="0">
+      <tbody>
+        <tr class="athing" id="123123123">
+          <td class="votelinks" valign="top" align="right">
+              <a id="up_16898827" href="vote?id=16898827&amp;how=up&amp;goto=news">
+							<div class="votearrow" title="upvote"></div>
+							</a>
+					</td>
+					<td class="uppertext" style="color: #808080; font-size: 12px">
+						<span class="user"> paulpmelton </span>
+						<span class="time"> {{comment.created_at| timeAgo}}</span> |
+						<span class="score"> {{comment.votes}} points </span>
+					</td>
+					</tr>
+			<tr>
+            <td colspan="1">
+            </td>
+            <td class="subtext">
+              <span class="text">{{comment.text}}</span>
+            </td>
+			</tr>
+			<tr>
+            <td colspan="1">
+            </td>
+            <td class="reply">
+              <a routerLink="/reply/{{comment.id}}" routerLinkActive="active">reply</a>
+            </td>
+			</tr>
+			
+      </tbody>
+  </table>
+</li>
