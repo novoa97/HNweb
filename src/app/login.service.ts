@@ -19,9 +19,15 @@ export class LoginService {
   }
 
   login() {
+  const httpOptions = {
+          headers: new HttpHeaders({
+              'Access-Control-Allow-Origin':  '*',
+          })
+  	};
 	let body = new HttpParams();
 	body = body.set('coauth_callback', 'https://hnweb.herokuapp.com/');
-	return this.http.post('https://api.twitter.com/oauth/request_token', body);
+	return this.http.post('https://api.twitter.com/oauth/request_token', body, httpOptions);
+  
   }
 
 }
