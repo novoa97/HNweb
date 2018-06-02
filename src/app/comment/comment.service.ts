@@ -45,8 +45,23 @@ export class CommentService {
 	  console.log(""+post_id);
     let body = new HttpParams();
     body = body.set('comment', comment_to_pass);
-	  body = body.set('post_id', ""+post_id);
-	  console.log(body);
-	  return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/',	body, httpOptions);  
+	body = body.set('post_id', ""+post_id);
+	console.log(body);
+	return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/comments/', body, httpOptions);  
+  }
+  
+  postReply(reply_to_pass: string, post_id: number, parent_id: number) {
+	  console.log(reply_to_pass);
+	const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        })
+	};
+	let body = new HttpParams();
+	body = body.set('comment', reply_to_pass);
+	body = body.set('post_id', ""+post_id);
+	body = body.set('parent_id', ""+parent_id); 
+	return this.http.post<comment>('https://asw-hacker-news.herokuapp.com/api/reply/', body, httpOptions);  
   }
 }

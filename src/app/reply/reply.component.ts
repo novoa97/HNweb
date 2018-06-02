@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { comment } from '../comment/comment'
 import { CommentService} from '../comment/comment.service'
@@ -20,7 +20,8 @@ export class ReplyComponent implements OnInit {
   constructor(
 	private route: ActivatedRoute, 
 	private CommentService: CommentService,
-	private UserService: UserService 	
+	private UserService: UserService, 
+	private router: Router	
 	) { }
 
   ngOnInit() {
@@ -48,6 +49,24 @@ export class ReplyComponent implements OnInit {
   
   reply(){
 	  console.log(this.reply_to_pass);
+	  this.CommentService.postReply(this.reply_to_pass, +this.comment.post_id, this.comment.id).subscribe(
+		(comment) => {
+            /* this function is executed every time there's a new output */
+           
+           
+		},
+		(err) => {
+            /* this function is executed when there's an ERROR */
+            console.log("ERROR: "+err);
+		},
+		() => {
+            /* this function is executed when the observable ends (completes) its stream */
+            console.log("COMPLETED");
+            //window.location.reload();
+			this.router.navigate(['/post/'+this.comment.post_id]);
+				
+			}
+		);
   }
 
 }
