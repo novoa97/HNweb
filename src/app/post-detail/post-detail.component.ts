@@ -35,6 +35,7 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPost();
+	if(this.post.text == null)document.getElementById("text").style.visibility="hidden";
   }
 
   getPost(): void {
