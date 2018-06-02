@@ -56,13 +56,14 @@ export class PostDetailComponent implements OnInit {
       (error) =>{console.log(error)}
     )
   }
-  
+
   comment(){
 
 	  this.CommentService.postComment(this.comment_to_pass, this.post.id).subscribe(
-     (response) => {
+     (comment) => {
             /* this function is executed every time there's a new output */
            console.log("VALUE RECEIVED: "+response);
+           this.comments.push(comment)
      },
      (err) => {
             /* this function is executed when there's an ERROR */
@@ -71,6 +72,8 @@ export class PostDetailComponent implements OnInit {
      () => {
             /* this function is executed when the observable ends (completes) its stream */
             console.log("COMPLETED");
+            //this.CommentService.getCommentsPost(this.post.id).subscribe(comments =>  this.comments = comments )
+
      }
  );
 	console.log ("adeu")

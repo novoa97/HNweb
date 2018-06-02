@@ -17,6 +17,7 @@ export class PostComponent implements OnInit {
   type: string;
   posts : post[];
 
+
   constructor(private PostService: PostService, private UserService: UserService) { }
 
   getPosts(): void {
