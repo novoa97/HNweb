@@ -52,7 +52,8 @@ export class PostDetailComponent implements OnInit {
   getNameUser(user_id) {
     this.UserService.getuser(user_id).subscribe(
       (user) =>{
-        this.name = user.name},
+        this.name = user.name
+        console.log(user)},
       (error) =>{console.log(error)}
     )
   }
