@@ -14,11 +14,12 @@
             <td style="line-height:12pt; height:10px;">
               <span class="pagetop">
                 <b class="hnname">
-                  <a routerLink="/" routerLinkActive="active">Hacker News</a> 
+                  <a routerLink="/" routerLinkActive="active">Hacker News</a>
                   </b> |
                 <a routerLink="/newest" routerLinkActive="active">new</a> |
                 <a id="th" routerLink="/threads/{{id}}" routerLinkActive="active">threads</a> |
-                <a routerLink="/ask" routerLinkActive="active"ask>ask</a>
+                <a routerLink="/ask" routerLinkActive="active"ask>ask</a> |
+                <a routerLink="/submit" routerLinkActive="active">submit</a>
                 <!--Submit-->
 
               </span>
@@ -27,7 +28,7 @@
               <span id="login">
                 <button type="button" class="btn btn-default" (click)="login()">Log In</button>
               </span>
-			  <span id="logout">
+			        <span id="logout">
                 <button type="button" class="btn btn-default" (click)="logout()">Log Out</button>
               </span>
           </td>

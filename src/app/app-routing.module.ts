@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component'
 import { NewestComponent } from './newest/newest.component'
 import { ReplyComponent } from './reply/reply.component'
 import { ThreadsComponent } from './threads/threads.component'
+import { PostFormComponent} from './post-form/post-form.component'
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'newest', component: NewestComponent },
   { path: 'reply/:id', component: ReplyComponent },
   { path: 'threads/:id', component: ThreadsComponent },
+  { path: 'submit', component: PostFormComponent}
 ];
 
 @NgModule({
