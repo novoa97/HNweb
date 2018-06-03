@@ -22,12 +22,11 @@
           <td colspan="2">
           </td>
           <td class="subtext">
-            <a ng-click="vote({ask.id})"> vote </a>
             <span class="score"> {{ask.upvotes_count}} </span> by
-            <a routerLink="/user/{{ask.user_id}}" routerLinkActive="active"> {{ask.user_name}} </a>
+            <a style="color:grey"routerLink="/user/{{ask.user_id}}" routerLinkActive="active"> {{ask.user_name}} </a>
             <span class="time"> {{ask.created_at| timeAgo}} </span>
             <span class="comments">
-              <a routerLink="/post/{{ask.id}}" routerLinkActive="active">{{ask.nComments}} comments </a>
+              <a style="color:grey" routerLink="/post/{{ask.id}}" routerLinkActive="active">{{ask.nComments}} comments </a>
             </span>
           </td>
         </tr>
