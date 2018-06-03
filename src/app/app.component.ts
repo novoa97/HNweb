@@ -33,7 +33,8 @@ export class AppComponent {
 	logout(){
 		localStorage.removeItem("token");
 		localStorage.removeItem("name");
-    this.user = null
+		this.user = null
+		window.location.reload();
 	}
 
 	login(){

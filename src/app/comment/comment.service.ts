@@ -73,4 +73,18 @@ export class CommentService {
 	};
 	  return this.http.get<comment[]>('https://asw-hacker-news.herokuapp.com/api/threads/'+user_id, httpOptions);
   }
+  
+  deleteComment (id: number){
+	  let body = new HttpParams();
+	  body = body.set('id', ""+id);
+	  const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        }),
+		body
+    };
+	
+	return this.http.delete<comment>('https://asw-hacker-news.herokuapp.com/api/deleteComment/', httpOptions);
+  }
 }

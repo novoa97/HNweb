@@ -19,6 +19,9 @@
           <a  routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{user.name}} </a>
           <span class="time"> {{post.created_at| timeAgo}} </span>
           <span class="comments"> <a href="13">{{post.nComments}} comments</a> </span>
+		  <span class = "del" *ngIf=show> |
+			<a class="deletePost" (click)="deletePost()">delete</a>
+		</span>
       </td>
 	  </tr>
     <tr>

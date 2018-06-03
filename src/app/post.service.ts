@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
@@ -38,6 +38,20 @@ export class PostService {
 
     return this.http.get<post[]>('https://asw-hacker-news.herokuapp.com/api/newest');
 
+  }
+  
+  deletePost (id: number){
+	  let body = new HttpParams();
+	  body = body.set('post_id', ""+id);
+	  const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        }),
+		body
+    };
+	
+	return this.http.delete<post>('https://asw-hacker-news.herokuapp.com/api/posts/', httpOptions);
   }
 
 }

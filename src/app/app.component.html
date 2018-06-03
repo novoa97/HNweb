@@ -15,9 +15,9 @@
               <span class="pagetop">
                 <a class="hname" routerLink="/" routerLinkActive="active">Hacker News </a>
                 <a routerLink="/newest" routerLinkActive="active">new</a> |
-                <div *ngIf=user>
+                <span class = "thr" *ngIf=user>
                   <a id="th" routerLink="/threads/{{id}}" routerLinkActive="active">threads</a> |
-                </div>
+                </span>
                 <a routerLink="/ask" routerLinkActive="active"ask>ask</a>
                 <!--Submit-->
 

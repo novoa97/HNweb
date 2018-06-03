@@ -1,6 +1,6 @@
  import { Component, OnInit} from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable, of } from 'rxjs';
 
@@ -28,17 +28,22 @@ export class PostDetailComponent implements OnInit {
   comments: comment[]
   comment_to_pass: string
   user: user
+  show: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private PostService: PostService,
     private location: Location,
     private UserService: UserService,
-    private CommentService: CommentService
+    private CommentService: CommentService,
+	private router: Router
   ) {}
 
   ngOnInit(): void {
+	
     this.getPost();
+	if (localStorage.getItem("token")) this.show = true;
+	else this.show = false;
 	if(this.post.text == null)document.getElementById("text").style.visibility="hidden";
   }
 
@@ -57,10 +62,30 @@ export class PostDetailComponent implements OnInit {
       (error) =>{console.log(error)}
     )
   }
+  
+  deletePost() {
+	  this.PostService.deletePost(this.post.id).subscribe(
+     (post) => {
+            /* this function is executed every time there's a new output */
+           console.log("VALUE RECEIVED: "+post);
+
+     },
+     (err) => {
+            /* this function is executed when there's an ERROR */
+            console.log("ERROR: "+err);
+     },
+     () => {
+            /* this function is executed when the observable ends (completes) its stream */
+            console.log("COMPLETED");
+			
+			this.router.navigate(['/']);
+     }
+	 );
+  }
 
   comment(){
 
-	  this.CommentService.postComment(this.comment_to_pass, this.post.id).subscribe(
+	 this.CommentService.postComment(this.comment_to_pass, this.post.id).subscribe(
      (comment) => {
             /* this function is executed every time there's a new output */
            console.log("VALUE RECEIVED: "+comment);
@@ -73,10 +98,9 @@ export class PostDetailComponent implements OnInit {
      () => {
             /* this function is executed when the observable ends (completes) its stream */
             console.log("COMPLETED");
-           //this.CommentService.getCommentsPost(this.post.id).subscribe(comments =>  this.comments = comments )
 
      }
  );
-	console.log ("adeu")
+	
   }
 }
