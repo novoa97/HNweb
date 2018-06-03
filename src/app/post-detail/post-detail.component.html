@@ -2,41 +2,49 @@
   <tbody>
     <tr class="athing" id="123123123">
       <td class="votelinks" valign="top" align="right">
-        <a id="up_16898827" href="vote?id=16898827&amp;how=up&amp;goto=news">
-          <div class="votearrow" title="upvote"></div>
-				</a>
+        <a id='up_16898827' href='vote?id=16898827&amp;how=up&amp;goto=news'>
+          <div class='votearrow' title='upvote'></div>
+        </a>
       </td>
-		  <td class="title">
-        <a href="{{post.url}}" class="storylink">{{post.title}}</a>
-        <span id = "url"> ( <span class="sitestr">{{post.url}}</span> ) </span>
-		  </td>
+      <span *ngIf="post.url; else ask">
+  		  <td class="urltitle">
+          <a style="color:black" href="{{post.url}}" class="storylink">{{post.title}}</a>
+          <span id = "url"> ( <span class="sitestr">{{post.url}}</span> ) </span>
+  		  </td>
+      </span>
+      <ng-template #ask>
+        <span class="asktitle">	Ask HN: {{post.title}} </span>
+      </ng-template>
 	  </tr>
 	  <tr>
       <td colspan="1">
       </td>
       <td class="subtext">
-          <span class="score"> {{post.upvotes_count}} points </span> by
-          <a routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{user.name}} </a>
-          <span class="time"> {{post.created_at| timeAgo}} </span>
-          <span class="comments"> <a href="13">{{post.nComments}} comments</a> </span>
+        {{post.upvotes_count}} points  by
+        <a style="color:grey" routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{user.name}} </a>
+         {{post.created_at| timeAgo}}| {{post.nComments}} comments
+         <span class = "del" *ngIf=show> |
+           <a class="deletePost" (click)="deletePost()">delete</a>
+		      </span>
       </td>
 	  </tr>
-	  <tr>
-      <td colspan="1">
-      </td>
-	  <form #commentForm="ngForm">
-	  <textarea rows="4" cols="50" id="comment_to_pass" required [(ngModel)]="comment_to_pass" name="comment_to_pass"
-               #name="ngModel"></textarea>
-      <button type="button" class="btn btn-default" (click)="comment(); commentForm.reset()">Comment</button>
-	  </form>
-	  </tr>
-	  <tr>
+    <tr>
       <td colspan="1">
       </td>
 	  <td id="text">
 		<span class="text1"> {{post.text}} </span>
 	  </td>
 		</tr>
+	  <tr>
+      <td colspan="1">
+      </td>
+	  <form #commentForm="ngForm">
+	  <textarea rows="4" cols="50" id="comment_to_pass" required [(ngModel)]="comment_to_pass" name="comment_to_pass"
+               #name="ngModel"></textarea><br>
+      <button type="button" class="btn btn-default" (click)="comment(); commentForm.reset()">Comment</button>
+	  </form>
+	  </tr>
+
 
     <tr class="spacer" style="height:40px">
     </tr>

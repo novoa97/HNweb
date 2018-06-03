@@ -1,4 +1,4 @@
-<table  border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+<table class="navbar"  border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
   <tbody>
     <tr>
       <td bgcolor="#ff6600">
@@ -13,24 +13,25 @@
             <!--Texto -->
             <td style="line-height:12pt; height:10px;">
               <span class="pagetop">
-                <b class="hnname">
-                  <a routerLink="/" routerLinkActive="active">Hacker News</a>
-                  </b> |
+                <a class="hname" routerLink="/" routerLinkActive="active">Hacker News </a>
                 <a routerLink="/newest" routerLinkActive="active">new</a> |
-                <a id="th" routerLink="/threads/{{id}}" routerLinkActive="active">threads</a> |
-                <a routerLink="/ask" routerLinkActive="active"ask>ask</a> |
+                <span class = "thr" *ngIf=user>
+                  <a id="th" routerLink="/threads/{{id}}" routerLinkActive="active">threads</a> |
+                </span>
+                <a routerLink="/ask" routerLinkActive="active"ask>ask</a>
                 <a routerLink="/submit" routerLinkActive="active">submit</a>
                 <!--Submit-->
 
               </span>
             </td>
           <td style="text-align:right;padding-right:4px;">
-              <span id="login">
-                <button type="button" class="btn btn-default" (click)="login()">Log In</button>
-              </span>
-			        <span id="logout">
-                <button type="button" class="btn btn-default" (click)="logout()">Log Out</button>
-              </span>
+            <div *ngIf="!user;else us">
+                <a class="login" (click)="login()">login</a>
+            </div>
+            <ng-template #us>
+                <a routerLink="/user/{{id}}" routerLinkActive="active">  {{user}}({{karma}})</a> |
+                <a class="login" (click)="logout()">logout</a>
+            </ng-template>
           </td>
           </tbody>
         </table>

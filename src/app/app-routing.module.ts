@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'newest', component: NewestComponent },
   { path: 'reply/:id', component: ReplyComponent },
   { path: 'threads/:id', component: ThreadsComponent },
-  { path: 'submit', component: PostFormComponent}
+  { path: 'submit', component: PostFormComponent},
+  { path: 'logout', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

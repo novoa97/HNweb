@@ -16,7 +16,7 @@ export class PostComponent implements OnInit {
 
   type: string;
   posts : post[];
-
+  idsesion: number = null;
 
   constructor(private PostService: PostService, private UserService: UserService) { }
 
@@ -32,10 +32,29 @@ export class PostComponent implements OnInit {
       this.PostService.getAsk().subscribe(posts => this.posts = posts);
   }
 
+  deletePost(index) {
+	  this.PostService.deletePost(this.posts[index].id).subscribe(
+     (post) => {
+            /* this function is executed every time there's a new output */
+           console.log("VALUE RECEIVED: "+post);
 
+     },
+     (err) => {
+            /* this function is executed when there's an ERROR */
+            console.log("ERROR: "+err);
+     },
+     () => {
+            /* this function is executed when the observable ends (completes) its stream */
+            console.log("COMPLETED");
+            this.posts.splice(index, 1);
+     }
+	 );
+  }
 
   ngOnInit() {
-      this.getPosts();
+    this.getPosts();
+	  if (localStorage.getItem("id")) this.idsesion = +localStorage.getItem("id") ;
+	  else this.idsesion = null;
 
   }
 

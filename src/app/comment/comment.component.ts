@@ -12,7 +12,7 @@ export class CommentComponent implements OnInit {
 
   @Input('comments') comments: comment[];
   @Input('reply') replyid: number
-
+  show: boolean = false;
 
   constructor( private CommentService: CommentService) { }
 
@@ -23,10 +23,32 @@ export class CommentComponent implements OnInit {
     else{
     this.getReply();
     }
+	if (localStorage.getItem("token")) this.show = true;
+	else this.show = false;
   }
   
   getReply(): void {
     this.CommentService.getReply(this.replyid).subscribe(comments => this.comments = comments);
+  }
+  
+  deleteComment(index){
+	  this.CommentService.deleteComment(this.comments[index].id).subscribe(
+     (post) => {
+            /* this function is executed every time there's a new output */
+           console.log("VALUE RECEIVED: "+post);
+
+     },
+     (err) => {
+            /* this function is executed when there's an ERROR */
+            console.log("ERROR: "+err);
+     },
+     () => {
+            /* this function is executed when the observable ends (completes) its stream */
+            console.log("COMPLETED");
+			window.location.reload();
+			
+     }
+	 );
   }
 
 

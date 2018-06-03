@@ -11,10 +11,9 @@
               <a id='up_16898827' href='vote?id=16898827&amp;how=up&amp;goto=news'>
                 <div class='votearrow' title='upvote'></div>
               </a>
-
           </td>
           <td>
-            <a class="title" href="http://{{post.url}}" class="storylink">{{post.title}}</a>
+            <a href="http://{{post.url}}" class="storylink">{{post.title}}</a>
             <span class="sitebit comhead"> ( {{post.url}} ) </span>
           </td>
         </tr>
@@ -22,13 +21,13 @@
           <td colspan="2">
           </td>
           <td class="subtext">
-            <a ng-click="vote({post.id})"> vote </a>
-            <span class="score"> {{post.upvotes_count}} </span> by
-            <a routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{post.user_name}} </a>
-            <span class="time"> {{post.created_at| timeAgo}} </span>
-            <span class="comments">
-              <a routerLink="/post/{{post.id}}" routerLinkActive="active">{{post.nComments}} comments </a>
-            </span>
+            {{post.upvotes_count}} points by
+            <a style="color:grey" routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{post.user_name}} </a>
+            {{post.created_at| timeAgo}} |
+            <a style="color:grey"routerLink="/post/{{post.id}}" routerLinkActive="active">{{post.nComments}} comments </a>
+			<span class = "del" *ngIf="idsesion === post.user_id"> |
+			<a style="color:grey"class="deletePost" (click)="deletePost(i)">delete</a>
+			</span>
           </td>
         </tr>
         <tr class="spacer" style="height:5px">

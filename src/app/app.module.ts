@@ -18,7 +18,9 @@ import { NewestComponent } from './newest/newest.component';
 import { ReplyComponent } from './reply/reply.component';
 import { ThreadsComponent } from './threads/threads.component';
 import { FormsModule }   from '@angular/forms';
-import { PostFormComponent } from './post-form/post-form.component';
+import { PostFormComponent } from './post-form/post-form.component'
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -41,10 +43,12 @@ import { PostFormComponent } from './post-form/post-form.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-	FormsModule
+	  FormsModule,
+    MatIconModule,
+    CommonModule
   ],
   providers: [{
-				provide: LocationStrategy, 
+				provide: LocationStrategy,
 				useClass: HashLocationStrategy
 			  }],
   bootstrap: [AppComponent]

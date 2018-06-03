@@ -7,28 +7,22 @@
             <span class="rank">{{i + 1}}</span>
           </td>
           <td valign="top" class="votelinks">
-
               <a id='up_16898827' href='vote?id=16898827&amp;how=up&amp;goto=news'>
                 <div class='votearrow' title='upvote'></div>
               </a>
-
           </td>
           <td>
-            <a class="title" href="http://{{ask.url}}" class="storylink">Ask HN: {{ask.title}}</a>
-            <span class="sitebit comhead"> ( {{ask.url}} ) </span>
+            Ask HN:  <a  routerLink="/post/{{ask.id}}" routerLinkActive="active" > {{ask.title}} </a>
           </td>
         </tr>
         <tr>
           <td colspan="2">
           </td>
           <td class="subtext">
-            <a ng-click="vote({ask.id})"> vote </a>
-            <span class="score"> {{ask.upvotes_count}} </span> by
-            <a routerLink="/user/{{ask.user_id}}" routerLinkActive="active"> {{ask.user_name}} </a>
+            {{ask.upvotes_count}} points  by
+            <a style="color:grey" routerLink="/user/{{ask.user_id}}" routerLinkActive="active"> {{ask.user_name}} </a>
             <span class="time"> {{ask.created_at| timeAgo}} </span>
-            <span class="comments">
-              <a routerLink="/post/{{ask.id}}" routerLinkActive="active">{{ask.nComments}} comments </a>
-            </span>
+            <a style="color:grey" routerLink="/post/{{ask.id}}" routerLinkActive="active">{{ask.nComments}} comments </a>
           </td>
         </tr>
         <tr class="spacer" style="height:5px">
