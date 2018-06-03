@@ -28,7 +28,7 @@ export class PostDetailComponent implements OnInit {
   comments: comment[]
   comment_to_pass: string
   user: user
-  show: boolean = false;
+  idsesion: number = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,8 +42,8 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
 	
     this.getPost();
-	if (localStorage.getItem("token")) this.show = true;
-	else this.show = false;
+	if (localStorage.getItem("id")) this.idsesion = +localStorage.getItem("id") ;
+	else this.idsesion = null;
 	if(this.post.text == null)document.getElementById("text").style.visibility="hidden";
   }
 

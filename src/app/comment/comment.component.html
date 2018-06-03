@@ -24,7 +24,9 @@
             <td colspan="1">
             </td>
             <td class="reply">
+			<span class = "del" *ngIf="idsesion != null">
               <a routerLink="/reply/{{comment.id}}" routerLinkActive="active">reply</a>
+			  </span>
 			  <span class = "del" *ngIf="idsesion === comment.user_id"> |
 				<a class="deleteComment" (click)="deleteComment(i)">delete</a>
 			  </span>

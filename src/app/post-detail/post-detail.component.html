@@ -23,9 +23,9 @@
         {{post.upvotes_count}} points  by
         <a style="color:grey" routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{user.name}} </a>
          {{post.created_at| timeAgo}}| {{post.nComments}} comments
-         <span class = "del" *ngIf=show> |
+         <span class = "del" *ngIf="idsesion === post.user_id"> |
            <a class="deletePost" (click)="deletePost()">delete</a>
-		      </span>
+		 </span>
       </td>
 	  </tr>
     <tr>
@@ -38,11 +38,13 @@
 	  <tr>
       <td colspan="1">
       </td>
+	  <span class = "del" *ngIf="idsesion != null">
 	  <form #commentForm="ngForm">
 	  <textarea rows="4" cols="50" id="comment_to_pass" required [(ngModel)]="comment_to_pass" name="comment_to_pass"
                #name="ngModel"></textarea><br>
       <button type="button" class="btn btn-default" (click)="comment(); commentForm.reset()">Comment</button>
 	  </form>
+	  </span>
 	  </tr>
 
 
