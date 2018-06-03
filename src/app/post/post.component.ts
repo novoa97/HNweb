@@ -25,11 +25,15 @@ export class PostComponent implements OnInit {
         this.posts = posts
         for ( let p of this.posts ){
           this.UserService.getuser(p.user_id).subscribe(user => p.user_name = user.name)
+          /*this.PostService.getVoted(p.id).subscribe( (response) =>*/ p.voted = false//)
         }
       })
   }
-  vote(): void{
-      this.PostService.getAsk().subscribe(posts => this.posts = posts);
+  vote(i): void{
+      this.posts[i].voted = true
+  }
+  unvote(i){
+      this.posts[i].voted = false
   }
 
   deletePost(index) {

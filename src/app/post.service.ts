@@ -39,7 +39,7 @@ export class PostService {
     return this.http.get<post[]>('https://asw-hacker-news.herokuapp.com/api/newest');
 
   }
-  
+
   deletePost (id: number){
 	  let body = new HttpParams();
 	  body = body.set('post_id', ""+id);
@@ -50,7 +50,7 @@ export class PostService {
         }),
 		body
     };
-	
+
 	return this.http.delete<post>('https://asw-hacker-news.herokuapp.com/api/posts/', httpOptions);
   }
 
@@ -68,6 +68,9 @@ export class PostService {
     body = body.set('content', content);
 	  console.log(body);
 	  return this.http.post<post>('https://asw-hacker-news.herokuapp.com/api/posts.json', body, httpOptions);
+  }
+  getVoted(id){
+    return true
   }
 
 }

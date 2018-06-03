@@ -7,10 +7,11 @@
             <span class="rank">{{i + 1}}</span>
           </td>
           <td valign="top" class="votelinks">
-
-              <a id='up_16898827' href='vote?id=16898827&amp;how=up&amp;goto=news'>
+            <span [style.visibility]="!post.voted ? 'visible' : 'hidden'">
+              <a (click)="vote(i)" >
                 <div class='votearrow' title='upvote'></div>
               </a>
+            </span>
           </td>
           <td>
             <a href="http://{{post.url}}" class="storylink">{{post.title}}</a>
@@ -24,6 +25,9 @@
             {{post.upvotes_count}} points by
             <a style="color:grey" routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{post.user_name}} </a>
             {{post.created_at| timeAgo}} |
+            <span [hidden]="!post.voted">
+              <a style="color:grey" (click)="unvote(i)"> unvote </a> |
+            </span>
             <a style="color:grey"routerLink="/post/{{post.id}}" routerLinkActive="active">{{post.nComments}} comments </a>
 			<span class = "del" *ngIf="idsesion === post.user_id"> |
 			<a style="color:grey"class="deletePost" (click)="deletePost(i)">delete</a>

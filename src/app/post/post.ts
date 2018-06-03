@@ -10,5 +10,5 @@ export interface post{
     tipo: string,
     votes: number;
     nComments: number;
-    upvotes_count: number
+    voted: boolean;
 }
