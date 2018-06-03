@@ -1,7 +1,7 @@
 <div class="container">
     <td>
       <div class="panel-body">
-      <form>
+      <form #PostForm="ngForm">
 
         <div class="field">
           <label for="title">Title</label>
@@ -15,10 +15,10 @@
         </div>
 
         <div class="form-group">
-          <label for="text">Text</label>
-          <input type="text" class="form-control" id="text">
+          <label for="texto">Text</label>
+          <input type="texto" class="form-control" id="texto">
         </div>
-        <button type="submit" class="btn btn-success">Create Post</button>
+        <button type="submit" class="btn btn-default">Create Post</button>
 
       </form>
       </div>

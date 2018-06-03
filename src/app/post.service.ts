@@ -40,4 +40,8 @@ export class PostService {
 
   }
 
+  createPost(): Observable<post[]> {
+    
+  }
+
 }
