@@ -12,7 +12,7 @@ export class CommentComponent implements OnInit {
 
   @Input('comments') comments: comment[];
   @Input('reply') replyid: number
-  show: boolean = false;
+  idsesion: number = null;
 
   constructor( private CommentService: CommentService) { }
 
@@ -23,8 +23,8 @@ export class CommentComponent implements OnInit {
     else{
     this.getReply();
     }
-	if (localStorage.getItem("token")) this.show = true;
-	else this.show = false;
+	if (localStorage.getItem("id")) this.idsesion = +localStorage.getItem("id") ;
+	else this.idsesion = null;
   }
   
   getReply(): void {
