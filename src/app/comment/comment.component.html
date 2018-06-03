@@ -8,7 +8,7 @@
 							</a>
 					</td>
 					<td class="uppertext" style="color: #808080; font-size: 12px">
-						<a routerLink="/user/{{comment.user_id}}" routerLinkActive="active">{{comment.usuari}}</a>
+						<span class="user"> {{comment.usuari}}</span> <!-- Link usuario -->
 						<span class="time"> {{comment.created_at| timeAgo}}</span> |
 						<span class="score"> {{comment.votes}} points </span>
 					</td>
@@ -23,19 +23,19 @@
 			<tr>
             <td colspan="1">
             </td>
-            <td class="reply">
-			<span class = "del" *ngIf="idsesion != null">
-              <a routerLink="/reply/{{comment.id}}" routerLinkActive="active">reply</a>
-              <span [hidden]="comment.voted">
-                <a (onclick)="vote(i)"> vote </a>
+            <td>
+              <span class = "subbarra" *ngIf="idsesion != null">
+                  <a style="color:grey" routerLink="/reply/{{comment.id}}" routerLinkActive="active">reply</a> |
+                <span [hidden]="comment.voted">
+                  <span class="l" style="color:grey" (click)="vote(i)"> vote </span>
+                </span>
+                <span [hidden]="!comment.voted">
+                  <span class="l" style="color:grey" (click)="unvote(i)"> unvote </span>
+                </span>
+                <span class = "del" *ngIf="idsesion === comment.user_id"> |
+  				        <a class="deleteComment" (click)="deleteComment(i)">delete</a>
+  			        </span>
               </span>
-              <span [hidden]="!comment.voted">
-                <a (onclick)="unvote(i)"> unvote </a>
-              </span>
-			  </span>
-			  <span class = "del" *ngIf="idsesion === comment.user_id"> |
-				<a class="deleteComment" (click)="deleteComment(i)">delete</a>
-			  </span>
             </td>
 			</tr>
 			<tr>

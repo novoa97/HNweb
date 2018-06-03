@@ -26,7 +26,10 @@ export class PostComponent implements OnInit {
         this.posts = posts
         for ( let p of this.posts ){
           this.UserService.getuser(p.user_id).subscribe(user => p.user_name = user.name)
-          /*this.PostService.getVoted(p.id).subscribe( (response) =>*/ p.voted = false//)
+          this.PostService.getVoted(p.id).subscribe( (response) =>{
+            p.voted = response
+            console.log(response)
+          })
         }
       })
   }
@@ -40,7 +43,7 @@ export class PostComponent implements OnInit {
   }
   unvote(i){
       this.posts[i].voted = false
-      this.PostService.unvote(this.posts[i].id)
+      this.PostService.unvote(this.posts[i].id).subscribe( response => console.log(response))
       this.posts[i].upvotes_count = this.posts[i].upvotes_count - 1
   }
 

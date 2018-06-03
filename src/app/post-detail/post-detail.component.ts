@@ -52,13 +52,13 @@ export class PostDetailComponent implements OnInit {
     this.PostService.getPostbyid(id).subscribe((post) =>{
       this.post = post
       this.getNameUser(this.post.user_id)
+      this.PostService.getVoted(id).subscribe( response => this.post.voted = response)
     })
     this.CommentService.getCommentsPost(id).subscribe((comments) =>{
        this.comments = comments
        for ( let c of this.comments ){
-         this.UserService.getuser(c.user_id).subscribe(
-           user => c.usuari = user.name)
-           c.voted = false;
+         this.UserService.getuser(c.user_id).subscribe(user => c.usuari = user.name)
+         this.CommentService.getVoted(c.id).subscribe( response => c.voted = response)
        }
      })
   }
@@ -69,6 +69,7 @@ export class PostDetailComponent implements OnInit {
       (error) =>{console.log(error)}
     )
   }
+
 
   deletePost() {
 	  this.PostService.deletePost(this.post.id).subscribe(
@@ -109,5 +110,19 @@ export class PostDetailComponent implements OnInit {
      }
  );
 
+  }
+
+  vote(){
+      if (localStorage.getItem("token")){
+        this.post.voted = true;
+        this.PostService.vote(this.post.id).subscribe( response => console.log(response))
+        this.post.upvotes_count = this.post.upvotes_count + 1
+      }
+      else this.router.navigate(['/login']);
+  }
+  unvote(){
+      this.post.voted = false
+      this.PostService.unvote(this.post.id).subscribe( response => console.log(response))
+      this.post.upvotes_count = this.post.upvotes_count - 1
   }
 }

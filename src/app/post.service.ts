@@ -69,9 +69,6 @@ export class PostService {
 	  console.log(body);
 	  return this.http.post<post>('https://asw-hacker-news.herokuapp.com/api/posts.json', body, httpOptions);
   }
-  getVoted(id){
-    return true
-  }
   vote(id){
     const httpOptions = {
         headers: new HttpHeaders({
@@ -95,6 +92,15 @@ export class PostService {
         body
     };
 	  return this.http.delete('https://asw-hacker-news.herokuapp.com/api/upvote', httpOptions);
+  }
+  getVoted(id){
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        })
+    };
+    return this.http.get<boolean>('https://asw-hacker-news.herokuapp.com/api/upvotes/'+id, httpOptions)
   }
 
 }

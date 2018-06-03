@@ -1,10 +1,12 @@
 <table class="fatitem" border="0">
   <tbody>
     <tr class="athing" id="123123123">
-      <td class="votelinks" valign="top" align="right">
-        <a id='up_16898827' href='vote?id=16898827&amp;how=up&amp;goto=news'>
-          <div class='votearrow' title='upvote'></div>
-        </a>
+      <td valign="top" class="votelinks">
+        <span [style.visibility]="!post.voted ? 'visible' : 'hidden'">
+          <a (click)="vote()" >
+            <div class='votearrow' title='upvote'></div>
+          </a>
+        </span>
       </td>
       <span *ngIf="post.url; else ask">
   		  <td class="urltitle">
@@ -23,8 +25,11 @@
         {{post.upvotes_count}} points  by
         <a style="color:grey" routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{user.name}} </a>
          {{post.created_at| timeAgo}}| {{post.nComments}} comments
-         <span class = "del" *ngIf="idsesion === post.user_id"> |
-           <a class="deletePost" (click)="deletePost()">delete</a>
+         <span [hidden]="!post.voted">
+           | <a style="color:grey" (click)="unvote()"> unvote </a>
+         </span>
+         <span class = "del" *ngIf="idsesion === post.user_id">
+           | <a class="deletePost" (click)="deletePost()">delete</a>
 		 </span>
       </td>
 	  </tr>
