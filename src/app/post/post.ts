@@ -8,7 +8,7 @@ export interface post{
     created_at: string; //Date
     updated_at: string; //Date
     tipo: string,
-    votes: number;
-    nComments: number;
     voted: boolean;
+    nComments: number;
+    upvotes_count: number;
 }

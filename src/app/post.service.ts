@@ -72,5 +72,29 @@ export class PostService {
   getVoted(id){
     return true
   }
+  vote(id){
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        })
+    };
+
+    let body = new HttpParams();
+    body = body.set('post_id', id);
+	  return this.http.post('https://asw-hacker-news.herokuapp.com/api/upvote', body, httpOptions);
+  }
+  unvote(id){
+    let body = new HttpParams();
+    body = body.set('post_id', id);
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        }),
+        body
+    };
+	  return this.http.delete('https://asw-hacker-news.herokuapp.com/api/upvote', httpOptions);
+  }
 
 }

@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 
 import { PostService } from '../post.service';
 import { UserService } from '../user/user.service';
+import { Router }  from "@angular/router";
 
 @Component({
   selector: 'posts',
@@ -18,7 +19,7 @@ export class PostComponent implements OnInit {
   posts : post[];
   idsesion: number = null;
 
-  constructor(private PostService: PostService, private UserService: UserService) { }
+  constructor(private PostService: PostService, private UserService: UserService, private router: Router) { }
 
   getPosts(): void {
       this.PostService.getPosts().subscribe((posts) => {
@@ -30,10 +31,17 @@ export class PostComponent implements OnInit {
       })
   }
   vote(i): void{
-      this.posts[i].voted = true
+      if (localStorage.getItem("token")){
+        this.posts[i].voted = true;
+        this.PostService.vote(this.posts[i].id).subscribe( response => console.log(response))
+        this.posts[i].upvotes_count = this.posts[i].upvotes_count + 1
+      }
+      else this.router.navigate(['/login']);
   }
   unvote(i){
       this.posts[i].voted = false
+      this.PostService.unvote(this.posts[i].id)
+      this.posts[i].upvotes_count = this.posts[i].upvotes_count - 1
   }
 
   deletePost(index) {

@@ -19,7 +19,9 @@
                   <a id="th" routerLink="/threads/{{id}}" routerLinkActive="active">threads</a> |
                 </span>
                 <a routerLink="/ask" routerLinkActive="active"ask>ask</a>
-                <a routerLink="/submit" routerLinkActive="active">submit</a>
+                <span class = "thr" *ngIf=user>
+                  | <a routerLink="/submit" routerLinkActive="active">submit</a>
+                </span>
                 <!--Submit-->
 
               </span>
