@@ -3,6 +3,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { comment } from './comment';
 import { CommentService } from './comment.service'
 
+import { UserService } from '../user/user.service';
+import { user } from '../user/user'
+
 @Component({
   selector: 'comment',
   templateUrl: './comment.component.html',
@@ -14,7 +17,7 @@ export class CommentComponent implements OnInit {
   @Input('reply') replyid: number
   idsesion: number = null;
 
-  constructor( private CommentService: CommentService) { }
+  constructor(private UserService: UserService, private CommentService: CommentService) { }
 
   ngOnInit() {
     if ( this.replyid == null){
@@ -28,7 +31,13 @@ export class CommentComponent implements OnInit {
   }
   
   getReply(): void {
-    this.CommentService.getReply(this.replyid).subscribe(comments => this.comments = comments);
+    this.CommentService.getReply(this.replyid).subscribe((comments) =>{
+		this.comments = comments
+		for ( let c of this.comments ){
+         this.UserService.getuser(c.user_id).subscribe(user => c.usuari = user.name)
+         c.voted = false;
+       }
+     })
   }
   
   deleteComment(index){

@@ -8,7 +8,7 @@
 							</a>
 					</td>
 					<td class="uppertext" style="color: #808080; font-size: 12px">
-						<span class="user"> {{comment.usuari}}</span> <!-- Link usuario -->
+						<a routerLink="/user/{{comment.user_id}}" routerLinkActive="active">{{comment.usuari}}</a>
 						<span class="time"> {{comment.created_at| timeAgo}}</span> |
 						<span class="score"> {{comment.votes}} points </span>
 					</td>

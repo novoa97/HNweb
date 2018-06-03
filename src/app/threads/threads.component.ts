@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { CommentService } from '../comment/comment.service'
 import { comment } from '../comment/comment';
 
+import { UserService } from '../user/user.service';
+import { user } from '../user/user'
+
 @Component({
   selector: 'threads',
   templateUrl: './threads.component.html',
@@ -14,7 +17,7 @@ export class ThreadsComponent implements OnInit {
   @Input('comments') comments: comment[];
   idsesion: number = null;
 
-  constructor(private route: ActivatedRoute, private CommentService: CommentService) { }
+  constructor(private UserService: UserService, private route: ActivatedRoute, private CommentService: CommentService) { }
 
   ngOnInit() {
     this.getComments();
@@ -24,7 +27,13 @@ export class ThreadsComponent implements OnInit {
   
   getComments(){
 	  const id = +this.route.snapshot.paramMap.get('id');
-	  this.CommentService.getThreads(id).subscribe(comments => this.comments = comments);
+	  this.CommentService.getThreads(id).subscribe((comments) =>{
+		  this.comments = comments
+		  for ( let c of this.comments ){
+          this.UserService.getuser(c.user_id).subscribe(user => c.usuari = user.name)
+           c.voted = false;
+       }
+     })
   }
   
   deleteComment(index){
