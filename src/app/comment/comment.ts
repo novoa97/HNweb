@@ -7,5 +7,7 @@ export interface comment{
   updated_at: string,
   post_id: string,
   user_id: string,
-  tipus: string
+  tipus: string,
+  usuari: string;
+  voted: boolean;
 }

@@ -8,7 +8,7 @@
 							</a>
 					</td>
 					<td class="uppertext" style="color: #808080; font-size: 12px">
-						<span class="user"> paulpmelton </span>
+						<span class="user"> {{comment.usuari}}</span> <!-- Link usuario -->
 						<span class="time"> {{comment.created_at| timeAgo}}</span> |
 						<span class="score"> {{comment.votes}} points </span>
 					</td>
@@ -26,6 +26,12 @@
             <td class="reply">
 			<span class = "del" *ngIf="idsesion != null">
               <a routerLink="/reply/{{comment.id}}" routerLinkActive="active">reply</a>
+              <span [hidden]="comment.voted">
+                <a (onclick)="vote(i)"> vote </a>
+              </span>
+              <span [hidden]="!comment.voted">
+                <a (onclick)="unvote(i)"> unvote </a>
+              </span>
 			  </span>
 			  <span class = "del" *ngIf="idsesion === comment.user_id"> |
 				<a class="deleteComment" (click)="deleteComment(i)">delete</a>

@@ -40,7 +40,7 @@ export class PostDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-	
+
     this.getPost();
 	if (localStorage.getItem("id")) this.idsesion = +localStorage.getItem("id") ;
 	else this.idsesion = null;
@@ -53,7 +53,14 @@ export class PostDetailComponent implements OnInit {
       this.post = post
       this.getNameUser(this.post.user_id)
     })
-    this.CommentService.getCommentsPost(id).subscribe(comments =>  this.comments = comments )
+    this.CommentService.getCommentsPost(id).subscribe((comments) =>{
+       this.comments = comments
+       for ( let c of this.comments ){
+         this.UserService.getuser(c.user_id).subscribe(
+           user => c.usuari = user.name)
+           c.voted = false;
+       }
+     })
   }
   getNameUser(user_id) {
     this.UserService.getuser(user_id).subscribe(
@@ -62,7 +69,7 @@ export class PostDetailComponent implements OnInit {
       (error) =>{console.log(error)}
     )
   }
-  
+
   deletePost() {
 	  this.PostService.deletePost(this.post.id).subscribe(
      (post) => {
@@ -77,7 +84,7 @@ export class PostDetailComponent implements OnInit {
      () => {
             /* this function is executed when the observable ends (completes) its stream */
             console.log("COMPLETED");
-			
+
 			this.router.navigate(['/']);
      }
 	 );
@@ -101,6 +108,6 @@ export class PostDetailComponent implements OnInit {
 
      }
  );
-	
+
   }
 }
