@@ -12,5 +12,5 @@
   <div align="center">
       <span> {{missatge}} </span> <br><br>
       <button type="button" class="button" (click)="inici()">Inici</button>
-      <button type="button" class="button" (click)="update()">Actualitzar</button>
+      <span *ngIf="user.id === id"> <button type="button" class="button" (click)="update()">Actualitzar</button></span>
   </div>
