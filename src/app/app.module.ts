@@ -18,6 +18,7 @@ import { NewestComponent } from './newest/newest.component';
 import { ReplyComponent } from './reply/reply.component';
 import { ThreadsComponent } from './threads/threads.component';
 import { FormsModule }   from '@angular/forms';
+import { PostFormComponent } from './post-form/post-form.component'
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
@@ -35,8 +36,8 @@ import { CommonModule } from '@angular/common';
 	LoginComponent,
 	NewestComponent,
 	ReplyComponent,
-	ThreadsComponent
-
+	ThreadsComponent,
+	PostFormComponent
   ],
   imports: [
     BrowserModule,

@@ -54,4 +54,20 @@ export class PostService {
 	return this.http.delete<post>('https://asw-hacker-news.herokuapp.com/api/posts/', httpOptions);
   }
 
+  createPost(title: string, tipo:string, content: string) {
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        })
+    };
+
+    let body = new HttpParams();
+    body = body.set('title', title);
+    body = body.set('tipo', tipo);
+    body = body.set('content', content);
+	  console.log(body);
+	  return this.http.post<post>('https://asw-hacker-news.herokuapp.com/api/posts.json', body, httpOptions);
+  }
+
 }

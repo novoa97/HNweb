@@ -53,6 +53,4 @@ export class AppComponent {
       this.id = +localStorage.getItem("id")
     }
   }
-
-
 }
