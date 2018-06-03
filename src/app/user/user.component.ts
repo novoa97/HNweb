@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
     this.UserService.update(this.user.about).subscribe(
       (response) =>{
         this.missatge = "Canviat correctament l'About"
-      }
+      },
       (error) =>{
         this.missatge = "Error"
       }
