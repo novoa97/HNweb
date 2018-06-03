@@ -22,8 +22,8 @@ export class AppComponent {
     if (localStorage.getItem("token")){
       console.log("Usuari conectat!")
       this.user = localStorage.getItem("name")
-      this.karma = localStorage.getItem("karma")
-      this.id =localStorage.getItem("id")
+      this.karma = +localStorage.getItem("karma")
+      this.id = +localStorage.getItem("id")
     }
 
   }
@@ -49,8 +49,8 @@ export class AppComponent {
     if (localStorage.getItem("token")){
       console.log("Usuari conectat!")
       this.user = localStorage.getItem("name")
-      this.karma = localStorage.getItem("karma")
-      this.id =localStorage.getItem("id")
+      this.karma = +localStorage.getItem("karma")
+      this.id = +localStorage.getItem("id")
     }
   }
 
