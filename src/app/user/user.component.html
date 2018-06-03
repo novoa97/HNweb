@@ -1,5 +1,16 @@
-<p>
-  Name: {{user.name}}<br>
-  About: {{user.about}}<br>
-  Karma: {{user.karma}}<br>
-</p>
+  <span>Name:</span> {{user.name}}<br>
+  <span>Karma:</span> {{user.karma}}<br>
+  <span *ngIf="user.id != id; else us"> <span>About:</span> {{user.about}}<br></span>
+  <ng-template #us>
+    <form #loginForm="ngForm">
+      <div class="form-group">
+        <span>About: </span><input type="text" class="form-control" id="about" #name="ngModel" [(ngModel)]="user.about" name=about>
+      </div>
+      <br>
+    </form>
+  </ng-template>
+  <div align="center">
+      <span> {{missatge}} </span> <br><br>
+      <button type="button" class="button" (click)="inici()">Inici</button>
+      <button type="button" class="button" (click)="update()">Actualitzar</button>
+  </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { user } from './user';
@@ -26,8 +26,21 @@ export class UserService {
   getName(id){
     return this.http.get('https://asw-hacker-news.herokuapp.com/api/users/'+id+'.json')
   }
-  
+
   getUserByToken(token): Observable<user>{
 	return this.http.get<user>('https://asw-hacker-news.herokuapp.com/api/userByToken/'+token)
+  }
+  update(about){
+
+  	  let body = new HttpParams();
+  	  body = body.set('about', about);
+  	  const httpOptions = {
+          headers: new HttpHeaders({
+              'Content-Type':  'application/x-www-form-urlencoded',
+              'Authorization':  localStorage.getItem('token')
+          })
+      }
+  	return this.http.put('https://asw-hacker-news.herokuapp.com/api/users', body, httpOptions);
+
   }
 }
