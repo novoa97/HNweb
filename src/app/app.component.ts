@@ -13,28 +13,30 @@ import { LoginService} from './login.service'
 export class AppComponent {
   title = 'app';
   id: number;
-  user: user;
+  user: string = null
+  karma: number = null
+
   constructor(private router: Router, private UserService: UserService, private LoginService: LoginService) { }
 
   ngOnInit() {
-	  console.log(localStorage.getItem("login"));
-	  console.log(localStorage.getItem("token"));
-	  console.log(localStorage.getItem("name"));
-	  console.log(localStorage.getItem("id"));
-	  this.id = +localStorage.getItem("id");
-    console.log(localStorage.getItem("token")=== null)
     if (localStorage.getItem("token")){
-      this.UserService.getUserByToken(localStorage.getItem("token")).subscribe(user => this.user = user)
-
+      console.log("Usuari conectat!")
+      this.user = localStorage.getItem("name")
+      this.karma = localStorage.getItem("karma")
+      this.id =localStorage.getItem("id")
     }
 
   }
 
 	logout(){
-		localStorage.removeItem("token");
-		localStorage.removeItem("name");
-		this.user = null
-		window.location.reload();
+    localStorage.removeItem("name")
+    localStorage.removeItem("id")
+		localStorage.removeItem("token")
+    localStorage.removeItem("karma")
+    this.user = null
+    this.karma = null
+    this.id = null
+    this.router.navigate(['/post']);
 	}
 
 	login(){
@@ -42,4 +44,15 @@ export class AppComponent {
     //this.LoginService.login().subscribe(response => console.log(response))
     this.router.navigate(['/login']);
 	}
+  ngDoCheck() {
+
+    if (localStorage.getItem("token")){
+      console.log("Usuari conectat!")
+      this.user = localStorage.getItem("name")
+      this.karma = localStorage.getItem("karma")
+      this.id =localStorage.getItem("id")
+    }
+  }
+
+
 }

@@ -11,30 +11,35 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  token: string; 
+  token: string;
   name: string;
   constructor(private UserService: UserService, private router: Router) { }
 
   ngOnInit() {
 	  this.name = "null";
   }
-  
+
   submitted = false;
-  
+
   onSubmit() {this.submitted = true; }
-  
+
   getSessio(){
-	  this.UserService.getUserByToken(this.token).subscribe((user) => {
-		  localStorage.setItem('name', user.name)
-		  localStorage.setItem('id', ""+user.id)
-	  });
-	  localStorage.setItem('token', this.token);
-	  localStorage.setItem('login', "true");
-	  window.location.reload();
-	  this.router.navigate(['/']);
+	  this.UserService.getUserByToken(this.token).subscribe(
+      (user) => {
+		      localStorage.setItem('name', user.name)
+		      localStorage.setItem('id', ""+user.id)
+          localStorage.setItem('karma', user.karma)
+          localStorage.setItem('token', user.token);
+      	  this.router.navigate(['/']);
+    	 },
+      (error) =>{
+          console.log("Error llamada api!")
+          console.log(error)
+      });
+
   }
-  
-  
-  
+
+
+
 
 }

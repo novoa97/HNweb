@@ -24,8 +24,8 @@
             {{post.upvotes_count}} points by
             <a style="color:grey" routerLink="/user/{{post.user_id}}" routerLinkActive="active"> {{post.user_name}} </a>
             {{post.created_at| timeAgo}} |
-            <a style="color:grey"routerLink="/post/{{post.id}}" routerLinkActive="active">{{post.nComments}} comments </a> 
-			<span class = "del" *ngIf=show> |
+            <a style="color:grey"routerLink="/post/{{post.id}}" routerLinkActive="active">{{post.nComments}} comments </a>
+			<span class = "del" *ngIf="idsesion === post.user_id"> |
 			<a style="color:grey"class="deletePost" (click)="deletePost(i)">delete</a>
 			</span>
           </td>

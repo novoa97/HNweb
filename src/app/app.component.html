@@ -28,8 +28,8 @@
                 <a class="login" (click)="login()">login</a>
             </div>
             <ng-template #us>
-                <a href="" >  {{user.name}} </a>
-                <a class="login" (click)="logout()">Log Out</a>
+                <a routerLink="/user/{{id}}" routerLinkActive="active">  {{user}}({{karma}})</a> |
+                <a class="login" (click)="logout()">logout</a>
             </ng-template>
           </td>
           </tbody>

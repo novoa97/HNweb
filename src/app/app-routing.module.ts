@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'newest', component: NewestComponent },
   { path: 'reply/:id', component: ReplyComponent },
   { path: 'threads/:id', component: ThreadsComponent },
+  { path: 'logout', redirectTo: '', pathMatch: 'full' },}
 ];
 
 @NgModule({

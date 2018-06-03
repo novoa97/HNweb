@@ -16,7 +16,7 @@ export class PostComponent implements OnInit {
 
   type: string;
   posts : post[];
-  show: boolean = false;
+  idsesion: number = null;
 
   constructor(private PostService: PostService, private UserService: UserService) { }
 
@@ -46,16 +46,15 @@ export class PostComponent implements OnInit {
      () => {
             /* this function is executed when the observable ends (completes) its stream */
             console.log("COMPLETED");
-			
-			window.location.reload();
+            this.posts.splice(index, 1);
      }
 	 );
   }
 
   ngOnInit() {
-      this.getPosts();
-	  if (localStorage.getItem("token")) this.show = true;
-	  else this.show = false;
+    this.getPosts();
+	  if (localStorage.getItem("id")) this.idsesion = +localStorage.getItem("id") ;
+	  else this.idsesion = null;
 
   }
 
