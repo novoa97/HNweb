@@ -14,11 +14,14 @@ import { user } from '../user/user'
 export class AskComponent implements OnInit {
 
   asks: post[]
-
+  idsesion: number = null;
+  
   constructor( private PostService: PostService, private UserService: UserService) { }
 
   ngOnInit() {
     this.getAsk()
+	if (localStorage.getItem("id")) this.idsesion = +localStorage.getItem("id") ;
+	else this.idsesion = null;
 
   }
   getAsk(){
@@ -30,6 +33,25 @@ export class AskComponent implements OnInit {
       }
     })
 
+  }
+  
+  deletePost(index) {
+	  this.PostService.deletePost(this.asks[index].id).subscribe(
+     (post) => {
+            /* this function is executed every time there's a new output */
+           console.log("VALUE RECEIVED: "+post);
+
+     },
+     (err) => {
+            /* this function is executed when there's an ERROR */
+            console.log("ERROR: "+err);
+     },
+     () => {
+            /* this function is executed when the observable ends (completes) its stream */
+            console.log("COMPLETED");
+            this.asks.splice(index, 1);
+     }
+	 );
   }
 
 }
