@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
@@ -40,8 +40,20 @@ export class PostService {
 
   }
 
-  createPost(): Observable<post[]> {
-    
+  createPost(title: string, tipo:string, content: string) {
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type':  'application/x-www-form-urlencoded',
+            'Authorization':  localStorage.getItem('token')
+        })
+    };
+
+    let body = new HttpParams();
+    body = body.set('title', title);
+    body = body.set('tipo', tipo);
+    body = body.set('content', content);
+	  console.log(body);
+	  return this.http.post<post>('https://asw-hacker-news.herokuapp.com/api/posts/', body, httpOptions);
   }
 
 }
