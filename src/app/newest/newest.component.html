@@ -28,6 +28,9 @@
             <span class="comments">
               <a style="color:grey" routerLink="/post/{{ask.id}}" routerLinkActive="active">{{ask.nComments}} comments </a>
             </span>
+			<span class = "del" *ngIf="idsesion === ask.user_id"> |
+			<a style="color:grey"class="deletePost" (click)="deletePost(i)">delete</a>
+			</span>
           </td>
         </tr>
         <tr class="spacer" style="height:5px">
