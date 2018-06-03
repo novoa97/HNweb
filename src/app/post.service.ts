@@ -53,7 +53,7 @@ export class PostService {
     body = body.set('tipo', tipo);
     body = body.set('content', content);
 	  console.log(body);
-	  return this.http.post<post>('https://asw-hacker-news.herokuapp.com/api/posts/', body, httpOptions);
+	  return this.http.post<post>('https://asw-hacker-news.herokuapp.com/api/posts.json', body, httpOptions);
   }
 
 }

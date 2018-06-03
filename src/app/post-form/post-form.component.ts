@@ -49,7 +49,14 @@ constructor(private PostService: PostService, private UserService: UserService, 
      },
      (err) => {
             /* this function is executed when there's an ERROR */
-            console.log("ERROR: "+ JSON.stringify(err));
+            /*var msg = null
+            console.log('status: '+ err.headers.get("status") )
+            console.log(msg.headers.status)
+            if (msg.headers.status === 302) {
+              console.log("dani")
+              this.router.navigate(['/post/'+msg.error.id]);
+            }*/
+            this.router.navigate(['/post/'+ err.error.id]);
      },
      () => {
             /* this function is executed when the observable ends (completes) its stream */
