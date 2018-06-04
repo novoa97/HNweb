@@ -31,3 +31,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - Angular: https://hnweb.herokuapp.com/#/
 - Ruby: https://asw-hacker-news.herokuapp.com/
+
+## Members
+- Carlos Alvarado
+- Marc Badia
+- Daniel Novoa
+- Daniel Tarrés
